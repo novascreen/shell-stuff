@@ -16,3 +16,15 @@ function aa() {
 
 $env:PYTHONIOENCODING="utf-8"
 Invoke-Expression "$(powershell -c thefuck --alias)"
+
+function GitCheckoutTrack {git checkout -t $args}
+Set-Alias -Name gct -Value GitCheckoutTrack
+
+function GitDiscard {git reset --hard; git clean -fd}
+Set-Alias -Name gdc -Value GitDiscard
+
+function RemoveRecurseForce {rm -Recurse -Force $args}
+Set-Alias -Name rmrf -Value RemoveRecurseForce
+
+function FlushDns { ipconfig /flushdns }
+Set-Alias -Name fldns -Value FlushDns
