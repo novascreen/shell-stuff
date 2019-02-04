@@ -45,9 +45,9 @@ function GitFlowFeatureStart {
 CreateAlias "gffs" GitFlowFeatureStart
 
 function GitFlowFeaturePublish {
-    git flow feature publish -F $args
+    git flow feature publish $args
 }
-CreateAlias "gffs" GitFlowFeaturePublish
+CreateAlias "gffp" GitFlowFeaturePublish
 
 function GitFlowBugfixStart {
     git flow bugfix start -F $args
@@ -55,9 +55,9 @@ function GitFlowBugfixStart {
 CreateAlias "gfbs" GitFlowBugfixStart
 
 function GitFlowBugfixPublish {
-    git flow bugfix publish -F $args
+    git flow bugfix publish $args
 }
-CreateAlias "gfbs" GitFlowBugfixPublish
+CreateAlias "gfbp" GitFlowBugfixPublish
 
 function GitDiscard { git reset --hard; git clean -fd }
 CreateAlias "gdc" GitDiscard
