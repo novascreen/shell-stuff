@@ -26,6 +26,8 @@ function GitPush { git push $args }
 CreateAlias "gpsh" GitPush
 function GitPushForce { git push --force $args }
 CreateAlias "gpshf" GitPushForce
+function GitPublish { git push -u (git remote) (git rev-parse --abbrev-ref HEAD) }
+CreateAlias "gpub" GitPublish
 function GitPull { git pull $args }
 CreateAlias "gpl" GitPull
 function GitPullRebase { git pull --rebase $args }
@@ -38,6 +40,9 @@ Example: gct origin/feature/abc"
 function GitBranchCheckout { git checkout -b $args }
 CreateAlias "gbc" GitBranchCheckout "Git: Create branch and checkout`n
 Example: gbc feature/abc"
+function GitBranchDelete { git branch -D $args[0]; git push (git remote) --delete $args[0] }
+CreateAlias "gbd" GitBranchDelete "Git: Delete local and remote branch`n
+Example: gbd test-branch"
 
 function GitFlowFeatureStart {
     git flow feature start -F $args
