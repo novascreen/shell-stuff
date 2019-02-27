@@ -26,12 +26,14 @@ goto choose
 net start W3SVC
 net start MsDepSvc
 net start ReportServer$SQL2016
+net start MSSQL$SQL2016
 goto end
 
 :stop
 net stop W3SVC
 net stop MsDepSvc
 net stop ReportServer$SQL2016
+net stop MSSQL$SQL2016
 goto end
 
 :fail
