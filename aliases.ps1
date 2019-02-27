@@ -20,6 +20,11 @@ function RemoveRecurseForce { Remove-Item -Recurse -Force $args }
 CreateAlias "rmrf" RemoveRecurseForce
 #endregion
 
+#region Node
+function NpmRun { npm run $args }
+CreateAlias "npmr" NpmRun
+#endregion
+
 
 #region git
 function GitPush { git push $args }
