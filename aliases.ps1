@@ -74,6 +74,36 @@ function GitFlowBugfixPublish {
 }
 CreateAlias "gfbp" GitFlowBugfixPublish
 
+function GitFlowHotfixStart {
+    git flow hotfix start -F $args
+}
+CreateAlias "gfhs" GitFlowHotfixStart
+
+function GitFlowHotfixPublish {
+    git flow hotfix publish $args
+}
+CreateAlias "gfhp" GitFlowHotfixPublish
+
+function GitFlowHotfixFinish {
+    git flow hotfix finish -F -p -m "Release" $args
+}
+CreateAlias "gfhf" GitFlowHotfixFinish
+
+function GitFlowReleaseStart {
+    git flow release start -F $args
+}
+CreateAlias "gfrs" GitFlowReleaseStart
+
+function GitFlowReleasePublish {
+    git flow release publish $args
+}
+CreateAlias "gfrp" GitFlowReleasePublish
+
+function GitFlowReleaseFinish {
+    git flow release finish -F -p -m "Release" $args
+}
+CreateAlias "gfrf" GitFlowReleaseFinish
+
 function GitDiscard { git reset --hard; git clean -fd }
 CreateAlias "gdc" GitDiscard
 
