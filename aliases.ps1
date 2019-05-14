@@ -24,10 +24,8 @@ CreateAlias "rmrf" RemoveRecurseForce
 function NpmRun { npm run $args }
 CreateAlias "npmr" NpmRun
 
-function NpmCheck { npx npm-check }
+function NpmCheck { npx npm-check $args }
 CreateAlias "npmc" NpmCheckUpdate
-function NpmCheckUpdate { npx npm-check --update --skip-unused }
-CreateAlias "npmcup" NpmCheckUpdate
 #endregion
 
 
