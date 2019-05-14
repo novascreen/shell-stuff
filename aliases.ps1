@@ -152,6 +152,7 @@ function GitFlowReleaseFinish {
 }
 CreateAlias "gfrf" GitFlowReleaseFinish
 
+git config --global alias.fpl '!branch=$(git branch-name); git checkout develop; git branch $branch -D; git checkout -t origin/$branch'
 
 git config --global alias.dc '!git reset --hard; git clean -fd'
 function GitDiscard { git reset --hard; git clean -fd }
