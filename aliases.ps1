@@ -33,7 +33,7 @@ CreateAlias "npmc" NpmCheckUpdate
 CreateAlias "g" git "Alias for git, type 'g alias' for a list of git aliases"
 git config --global alias.alias "config --get-regexp ^alias\."
 
-
+git config --global alias.branch-name '!git rev-parse --abbrev-ref HEAD'
 
 git config --global alias.psh 'push'
 function GitPush { git push $args }
@@ -45,7 +45,7 @@ function GitPushForce { git push --force $args }
 CreateAlias "gpshf" GitPushForce
 
 
-git config --global alias.pub 'push -u (git remote) (git rev-parse --abbrev-ref HEAD)'
+git config --global alias.pub '!git push -u origin $(git branch-name)'
 function GitPublish { git push -u (git remote) (git rev-parse --abbrev-ref HEAD) }
 CreateAlias "gpub" GitPublish
 
