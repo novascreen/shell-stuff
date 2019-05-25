@@ -25,7 +25,10 @@ function NpmRun { npm run $args }
 CreateAlias "npmr" NpmRun
 
 function NpmCheck { npx npm-check $args }
-CreateAlias "npmc" NpmCheckUpdate
+CreateAlias "npmc" NpmCheck
+
+function NpmCheckUpdate { npx npm-check -u $args }
+CreateAlias "npmcup" NpmCheckUpdate
 #endregion
 
 
