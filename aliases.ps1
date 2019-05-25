@@ -182,6 +182,7 @@ CreateAlias "gss" GitStashStaged
 git config --global alias.st 'fetch --prune --pruneTags'
 function GitSyncTags { git fetch --prune --pruneTags }
 CreateAlias "gst" GitSyncTags "Git: Sync tags with remote"
+
 #endregion
 
 #region Docker
@@ -220,8 +221,7 @@ function aa() {
 function ReloadPath { $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") }
 CreateAlias "relpath" ReloadPath
 
-function TimeCommand { Measure-Command { $args } }
-CreateAlias "time" TimeCommand
+CreateAlias "time" Measure-Command "Example: time { npm ci }"
 
 function UpdateTime { W32tm /resync /force }
 CreateAlias "uptm" UpdateTime
