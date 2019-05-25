@@ -7,3 +7,5 @@ export DOCKER_HOST='tcp://0.0.0.0:2375'
 alias dc=docker-compose
 alias dc-reset="dc build && dc down -v && dc up -d && dc logs -f"
 alias g=git
+alias npmc="npx npm-check"
+alias npmcup="npx npm-check -u"
