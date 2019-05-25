@@ -1,0 +1,49 @@
+[core]
+	fileMode = false
+	autocrlf = input
+	editor = code-insiders --wait
+
+[push]
+	default = simple
+
+[rerere]
+	enabled = true
+
+[gitflow "prefix"]
+	versiontag = v
+
+[fetch]
+	prune = true
+	pruneTags = true
+
+[alias]
+	alias = config --get-regexp ^alias\\.
+	amd = commit --amend
+	bd = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	cl = clean -xfd
+	co = checkout
+	cob = checkout -b
+	cot = checkout -t
+	dc = "!git reset --hard; git clean -fd"
+	dlm = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	fbp = flow bugfix publish
+	fbs = flow bugfix start -F
+	ffp = flow feature publish
+	ffs = flow feature start -F
+	fhf = flow hotfix finish -F -p -m \"Release\"
+	fhp = flow hotfix publish
+	fhs = flow hotfix start -F
+	frf = flow release finish -F -p -m \"Release\"
+	frp = flow release publish
+	frs = flow release start -F
+	gbd = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
+	hsh = rev-parse --short HEAD
+	pl = pull
+	plf = "!branch=`git name-rev --name-only HEAD`; git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
+	plr = pull --rebase
+	psh = push
+	pshf = push --force
+	pub = "!git push -u origin $(git branch-name)"
+	ss = stash save --keep-index --include-untracked \"remove-unstaged\"
+	st = fetch --prune --pruneTags

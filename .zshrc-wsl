@@ -6,5 +6,4 @@ unsetopt BG_NICE
 export DOCKER_HOST='tcp://0.0.0.0:2375'
 alias dc=docker-compose
 alias dc-reset="dc build && dc down -v && dc up -d && dc logs -f"
-
-alias git-discard="git reset --hard && git clean -fd"
+alias g=git
