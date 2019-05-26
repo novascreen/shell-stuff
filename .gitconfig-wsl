@@ -18,15 +18,33 @@
 
 [alias]
 	alias = config --get-regexp ^alias\\.
-	amd = commit --amend
-	bd = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
+	amend = commit --amend
+	amend-no-edit = commit --amend --no-edit
+	branch-delete-fully = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
+	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
-	cl = clean -xfd
+	clean-fully = clean -xfd
+	checkout-branch = checkout -b
+	checkout-track = checkout -t
+	discard = "!git reset --hard; git clean -fd"
+	hash-short = rev-parse --short HEAD
+	pull-force = "!branch=`git name-rev --name-only HEAD`; git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
+	push-force = push --force
+	publish = "!git push -u origin $(git branch-name)"
+	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
+	sync-tags = fetch --prune --pruneTags
+
+	ada = add .
+	amd = !git amend
+	amdne = !git amend-no-edit
+	bdf = !git branch-delete-fully
+	bdm = !git branch-delete-merged
+	bn = !git branch-name
+	cl = !git clean-fully
 	co = checkout
-	cob = checkout -b
-	cot = checkout -t
-	dc = "!git reset --hard; git clean -fd"
-	dlm = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	cob = !git checkout-branch
+	cot = !git checkout-track
+	dc = !git discard
 	fbp = flow bugfix publish
 	fbs = flow bugfix start -F
 	ffp = flow feature publish
@@ -37,13 +55,12 @@
 	frf = flow release finish -F -p -m \"Release\"
 	frp = flow release publish
 	frs = flow release start -F
-	gbd = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
-	hsh = rev-parse --short HEAD
+	hsh = !git hash-short
 	pl = pull
-	plf = "!branch=`git name-rev --name-only HEAD`; git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
+	plf = !git pull-force
 	plr = pull --rebase
-	psh = push
-	pshf = push --force
-	pub = "!git push -u origin $(git branch-name)"
-	ss = stash save --keep-index --include-untracked \"remove-unstaged\"
-	st = fetch --prune --pruneTags
+	pshf = !git push-force
+	pub = !git publish
+	s = status
+	ss = !git stash-staged
+	st = !git sync-tags
