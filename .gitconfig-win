@@ -17,7 +17,7 @@
 	pruneTags = true
 
 [alias]
-	alias = config --get-regexp ^alias\\.
+	alias = "!git config --get-regexp ^alias\\."
 	amend = commit --amend
 	amend-no-edit = commit --amend --no-edit
 	branch-delete-fully = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
@@ -30,7 +30,7 @@
 	discard = "!git reset --hard; git clean -fd"
 	hash-short = rev-parse --short HEAD
   my-history = !git log --author=$(git config user.email) --format="format:%Cblue%ad%n%s%n%b%n"
-	pull-force = "!branch=`git name-rev --name-only HEAD`; git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
+	pull-force = "!branch=$(git branch-name); git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
 	push-force = push --force
 	publish = "!git push -u origin $(git branch-name)"
 	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
