@@ -30,7 +30,7 @@
 	discard = "!git reset --hard; git clean -fd"
 	hash-short = rev-parse --short HEAD
   my-history = !git log --author=$(git config user.email) --format="format:%Cblue%ad%n%s%n%b%n"
-	pull-force = "!branch=`git name-rev --name-only HEAD`; git checkout develop; git branch $branch -D; git checkout -t origin/$branch"
+	pull-force = "!branch=`git name-rev --name-only HEAD`; git checkout master; git branch $branch -D; git checkout -t origin/$branch"
 	push-force = push --force
 	publish = "!git push -u origin $(git branch-name)"
 	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
