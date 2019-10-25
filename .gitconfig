@@ -22,6 +22,7 @@
 	amend-no-edit = commit --amend --no-edit
 	branch-delete-fully = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
 	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	branch-delete-squashed = "!git checkout -q master && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	clean-fully = clean -xfd
   check-ignore-verbose = check-ignore -v
@@ -41,6 +42,7 @@
 	amdne = !git amend-no-edit
 	bdf = !git branch-delete-fully
 	bdm = !git branch-delete-merged
+	bds = !git branch-delete-squashed
 	bn = !git branch-name
 	cl = !git clean-fully
   civ = !git check-ignore-verbose
