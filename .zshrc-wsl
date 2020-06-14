@@ -1,4 +1,0 @@
-BASEDIR=$(dirname "$0")
-source $BASEDIR/.zshrc
-
-export DOCKER_HOST='tcp://0.0.0.0:2375'
