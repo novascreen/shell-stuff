@@ -21,8 +21,8 @@
 	amend = commit --amend
 	amend-no-edit = commit --amend --no-edit
 	branch-delete-fully = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
-	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
-	branch-delete-squashed = "!git checkout -q master && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
+	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d"
+	branch-delete-squashed = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	clean-fully = clean -xfd
   check-ignore-verbose = check-ignore -v
@@ -31,7 +31,7 @@
 	discard = "!git reset --hard; git clean -fd"
 	hash-short = rev-parse --short HEAD
   my-history = !git log --author=$(git config user.email) --format="format:%Cblue%ad%n%s%n%b%n"
-	pull-force = "!branch=`git name-rev --name-only HEAD`; git checkout master; git branch $branch -D; git checkout -t origin/$branch"
+	pull-force = "!branch=`git branch-name`; git checkout main; git branch $branch -D; git checkout -t origin/$branch"
 	push-force = push --force
 	publish = "!git push -u origin $(git branch-name)"
 	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
