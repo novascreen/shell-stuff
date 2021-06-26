@@ -16,6 +16,9 @@
 	prune = true
 	pruneTags = true
 
+[init]
+  defaultBranch = main
+
 [alias]
 	alias = config --get-regexp ^alias\\.
 	amend = commit --amend
@@ -25,12 +28,12 @@
 	branch-delete-squashed = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	clean-fully = clean -xfd
-  check-ignore-verbose = check-ignore -v
+	check-ignore-verbose = check-ignore -v
 	checkout-branch = checkout -b
 	checkout-track = checkout -t
 	discard = "!git reset --hard; git clean -fd"
 	hash-short = rev-parse --short HEAD
-  my-history = !git log --author=$(git config user.email) --format="format:%Cblue%ad%n%s%n%b%n"
+	my-history = !git log --author=$(git config user.email) --format="format:%Cblue%ad%n%s%n%b%n"
 	pull-force = "!branch=`git branch-name`; git checkout main; git branch $branch -D; git checkout -t origin/$branch"
 	push-force = push --force
 	publish = "!git push -u origin $(git branch-name)"
