@@ -15,3 +15,4 @@ alias pwsh=pwsh.exe
 alias npmr="npm run"
 alias npmc="npx npm-check"
 alias npmcup="npx npm-check -u"
+alias ys=yarn start
