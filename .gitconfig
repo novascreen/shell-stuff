@@ -37,6 +37,7 @@
 	pull-force = "!branch=`git branch-name`; git checkout main; git branch $branch -D; git checkout -t origin/$branch"
 	push-force = push --force
 	publish = "!git push -u origin $(git branch-name)"
+	squash = "!f() { git reset --soft HEAD~$1 && git commit; }; f"
 	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
 	sync-tags = fetch --prune --pruneTags
 
@@ -53,24 +54,18 @@
 	cob = !git checkout-branch
 	cot = !git checkout-track
 	cm = commit
+	cmn = commit --no-verify
 	dc = !git discard
-	fbp = flow bugfix publish
-	fbs = flow bugfix start -F
-	ffp = flow feature publish
-	ffs = flow feature start -F
-	fhf = flow hotfix finish -F -p -m \"Release\"
-	fhp = flow hotfix publish
-	fhs = flow hotfix start -F
-	frf = flow release finish -F -p -m \"Release\"
-	frp = flow release publish
-	frs = flow release start -F
 	hsh = !git hash-short
 	mh = !git my-history
 	pl = pull
 	plf = !git pull-force
 	plr = pull --rebase
+	pshn = push --no-verify
 	pshf = !git push-force
+	pshfn = !git push-force --no-verify
 	pub = !git publish
+	pubn = !git publish --no-verify
 	rh = reset --hard
 	s = status
 	ss = !git stash-staged
