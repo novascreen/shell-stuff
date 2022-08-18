@@ -44,6 +44,9 @@
 	ada = add .
 	amd = !git amend
 	amdne = !git amend-no-edit
+	b = branch
+	bl = branch -av
+	bd = branch -d
 	bdf = !git branch-delete-fully
 	bdm = !git branch-delete-merged
 	bds = !git branch-delete-squashed
@@ -56,6 +59,7 @@
 	cm = commit
 	cmn = commit --no-verify
 	dc = !git discard
+	fa = fetch --all
 	hsh = !git hash-short
 	mh = !git my-history
 	pl = pull
@@ -66,6 +70,7 @@
 	pshfn = !git push-force --no-verify
 	pub = !git publish
 	pubn = !git publish --no-verify
+	rb = rebase
 	rh = reset --hard
 	s = status
 	ss = !git stash-staged
