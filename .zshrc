@@ -4,7 +4,9 @@ plugins=(git z)
 
 export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=47;34:ow=1;34"
 export DISPLAY=`grep -oP "(?<=nameserver ).+" /etc/resolv.conf`:0.0
-
+export EDITOR="code --wait"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 # https://github.com/Microsoft/WSL/issues/1838
 unsetopt BG_NICE
