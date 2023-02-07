@@ -23,6 +23,9 @@
 	alias = config --get-regexp ^alias\\.
 	amend = commit --amend
 	amend-no-edit = commit --amend --no-edit
+	commit-all = !git add --all && git commit
+	commit-all-amend = !git add --all && git commit --amend
+	commit-all-amend-no-edit = !git add --all && git commit --amend --no-edit
 	branch-delete-fully = "!f() { git branch -D $1; git push (git remote) --delete $1; }; f"
 	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d"
 	branch-delete-squashed = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
@@ -40,8 +43,10 @@
 	squash = "!f() { git reset --soft HEAD~$1 && git commit; }; f"
 	stash-staged = stash save --keep-index --include-untracked \"remove-unstaged\"
 	sync-tags = fetch --prune --pruneTags
+	unwip = reset HEAD~
+	wip = !sh -c 'git add --all && git commit -n -q -m WIP'
 
-	ada = add .
+	aa = add --all
 	amd = !git amend
 	amdne = !git amend-no-edit
 	b = branch
@@ -51,6 +56,9 @@
 	bdm = !git branch-delete-merged
 	bds = !git branch-delete-squashed
 	bn = !git branch-name
+	ca = !git commit-all
+	caa = !git commit-all-amend
+	caane = !git commit-all-amend-no-edit
 	cl = !git clean-fully
 	civ = !git check-ignore-verbose
 	co = checkout
