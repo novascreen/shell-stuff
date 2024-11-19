@@ -16,6 +16,13 @@
 	prune = true
 	pruneTags = true
 
+[pull]
+	rebase = true
+
+[rebase]
+    updateRefs = true
+		autoStash = true
+
 [init]
   defaultBranch = main
 
@@ -30,6 +37,7 @@
 	branch-delete-merged = "!git branch --merged | grep  -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d"
 	branch-delete-squashed = "!git checkout -q main && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done"
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	branches-recent = "!git branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 	clean-fully = clean -xfd
 	check-ignore-verbose = check-ignore -v
 	checkout-branch = checkout -b
@@ -56,6 +64,7 @@
 	bdm = !git branch-delete-merged
 	bds = !git branch-delete-squashed
 	bn = !git branch-name
+	br = !git branches-recent
 	ca = !git commit-all
 	caa = !git commit-all-amend
 	caane = !git commit-all-amend-no-edit
@@ -79,6 +88,10 @@
 	pub = !git publish
 	pubn = !git publish --no-verify
 	rb = rebase
+	rbc = rebase --continue
+	rbi = rebase --interactive
+	rbs = rebase --skip
+	rba = rebase --abort
 	rh = reset --hard
 	s = status
 	ss = !git stash-staged
